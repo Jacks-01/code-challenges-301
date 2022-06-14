@@ -196,6 +196,12 @@ of which has firstName, lastName, and age properties, and sorts those people by
 their last names. Do not worry about capitalization or first names.
 ----------------------------------------------------------------------------- */
 
+/**
+ * 
+ * @param {string} firstName - a string
+ * @param {string} lastName - a string
+ * @param {number} age - a number
+ */
 function Person(firstName, lastName, age) {
   this.firstName = firstName;
   this.lastName = lastName;
@@ -208,8 +214,13 @@ const people = [
   new Person('Stan', 'Seattle', 67),
 ];
 
+/**
+ * 
+ * @param {array} arr an array of Person objects
+ * @returns {array} - an array of people sorted by their last names.
+ */
 const sortPeople = (arr) => {
-  // Solution code here...
+  return arr.sort((a,b) => (a.lastName > b.lastName) ? 1 : -1);
 };
 
 /* -----------------------------------------------------------------------------
@@ -373,7 +384,7 @@ describe('Testing challenge 9', () => {
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should sort people by their last names', () => {
     expect(sortPeople(people)).toStrictEqual([
       new Person('Casey', 'Codefellow', 38),
