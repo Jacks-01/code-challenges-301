@@ -236,10 +236,36 @@ If two people have the same full name, the younger one should come first. Do not
 worry about capitalization.
 ----------------------------------------------------------------------------- */
 
-const sortPeopleBetter = (arr) => {
-  // Solution code here...
-};
+// /**
+//  * 
+//  * @param {array} arr - an array Person objects
+//  * @returns {array} an array of Person objects sorted by lastname first, then first name, then age.
+//  */
+// const sortPeopleBetter = (arr) => {
+//   return arr.sort((a,b) => (a.lastName > b.lastName) ? 1
+//    : (a.lastName === b.lastName)
+//     ? ((a.firstName > b.firstName) ? 1 : (a.firstName === b.firstName))
+//     ? (a.age > b.age) : 1
+//     : -1)
+// };
 
+// const sortPeopleBetter = (arr) => {
+//   return arr.sort((a,b) => {
+//    if (a.lastName > b.lastName) {
+//     return 1
+//   } else if( a.lastName === b.lastName) {
+//     return -1 
+//   } else if(a.firstName > b.firstName) {
+//     return 1
+//   } else if(a.firstName === b.firstName) {
+//     return -1
+//   } else if(a.age > b.age) {
+//     return 1
+//   } else {
+//     return -1
+//   }
+//  });
+// };
 /* -----------------------------------------------------------------------------
 CHALLENGE 12 - Stretch Goal
 
@@ -396,7 +422,7 @@ describe('Testing challenge 10', () => {
   });
 });
 
-xdescribe('Testing challenge 11', () => {
+describe('Testing challenge 11', () => {
   test('It should sort people with more strict ordering', () => {
     const family = [
       new Person('Casey', 'Codefellows', 55),
