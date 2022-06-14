@@ -166,7 +166,8 @@ highest.
  * @returns {array} an array sorted by the length of each index.
  */
 const sortByLength = (arr) => {
-  // Solution code here...
+  let myArray = arr;
+  return myArray.sort((a,b) => a.length - b.length);
 };
 
 /* -----------------------------------------------------------------------------
