@@ -225,8 +225,19 @@ const characters = [
 	},
 ];
 
+/**
+ * 
+ * @param {array} arr - an array of children objects
+ */
 const countNumberOfChildren = (arr) => {
-	// Solution code here...
+  return arr.reduce((total, parent) => {
+    let children = parent.children.length
+    console.log(children);
+    if (children != undefined) {
+      total += children
+    };
+    return total
+  }, 0)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -385,7 +396,7 @@ describe('Testing challenge 6', () => {
 	});
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
 	test('It should return the total number of children', () => {
 		expect(countNumberOfChildren(characters)).toStrictEqual(14);
 	});
