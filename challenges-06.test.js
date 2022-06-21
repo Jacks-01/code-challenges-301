@@ -22,8 +22,17 @@ For example:
 Returns: ['dyoll', 'eimaj'];
 ------------------------------------------------------------------------------------------------ */
 
+/**
+ *
+ * @param {array} arr - an array of people objects
+ * @returns an array with each object name reversed.
+ */
 const getNames = (arr) => {
-  // Solution code here...
+	let name = arr.map((person) => {
+		return person.name.split('').reverse().join('');
+	});
+
+	return name;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -33,8 +42,13 @@ Write a function that appends ' The end.' to a string, and returns the modified 
 
 ------------------------------------------------------------------------------------------------ */
 
+/**
+ *
+ * @param {string} str a string
+ * @returns the string, with 'the end' attatched.
+ */
 const appendTheEnd = (str) => {
-  // Solution code here...
+	return str.concat(' The end.');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -50,8 +64,13 @@ appendFirstToLast(a);
 console.log(a) prints [1, 2, 3, 1]
 ------------------------------------------------------------------------------------------------ */
 
+/**
+ *
+ * @param {array} arr an array
+ */
 const appendFirstToLast = (arr) => {
-  // Solution code here...
+	let itemToAppend = arr[0];
+	arr.push(itemToAppend);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -69,8 +88,17 @@ addBirthYearProperty(octavia, 1947);
 console.log(a) prints { fullName: 'Octavia Estelle Butler', yearBorn: 1947 }
 ------------------------------------------------------------------------------------------------ */
 
+/**
+ *
+ * @param {object} obj a person object
+ * @param {number} year the birth date of a person object
+ * @returns returns an object with the birth date and fullname
+ */
 const addBirthYearProperty = (obj, year) => {
-  // Solution code here...
+	Object.defineProperty(obj, 'yearBorn', {
+    value: year
+  } )
+  console.log(obj);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -87,7 +115,7 @@ console.log(people[1].isAuthor) prints true
 ------------------------------------------------------------------------------------------------ */
 
 const setStatusAsAuthor = (people) => {
-  // Solution code here...
+	// Solution code here...
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -106,8 +134,7 @@ console.log(a) prints [1, 2, 3, 4]
 ------------------------------------------------------------------------------------------------ */
 
 const append = (arr1, arr2) => {
-  // Solution code here...
-
+	// Solution code here...
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -122,57 +149,66 @@ Run your tests from the console: jest challenges-02.test.js
 ------------------------------------------------------------------------------------------------ */
 
 describe('Testing challenge 1', () => {
-  test('It returns an array of names reversed', () => {
-    expect(getNames([{name:'lloyd', age: 32, shoeSize: 12}, {name:'jamie', age:21, shoeSize: 8}])).toStrictEqual(['dyoll', 'eimaj']);
-    expect(getNames([])).toStrictEqual([]);
-  });
+	test('It returns an array of names reversed', () => {
+		expect(
+			getNames([
+				{ name: 'lloyd', age: 32, shoeSize: 12 },
+				{ name: 'jamie', age: 21, shoeSize: 8 },
+			])
+		).toStrictEqual(['dyoll', 'eimaj']);
+		expect(getNames([])).toStrictEqual([]);
+	});
 });
 
 describe('Testing challenge 2', () => {
-  test('It should append without modifying the oiginal', () => {
-    const a = 'This is my story.';
-    const b = appendTheEnd(a);
+	test('It should append without modifying the oiginal', () => {
+		const a = 'This is my story.';
+		const b = appendTheEnd(a);
 
-    expect(a).toStrictEqual('This is my story.');
-    expect(b).toStrictEqual('This is my story. The end.');
-  });
+		expect(a).toStrictEqual('This is my story.');
+		expect(b).toStrictEqual('This is my story. The end.');
+	});
 });
 
 describe('Testing challenge 3', () => {
-  test('It should append by modifying the oiginal', () => {
-    const a = ['Yes', 'it', 'is'];
-    appendFirstToLast(a);
+	test('It should append by modifying the oiginal', () => {
+		const a = ['Yes', 'it', 'is'];
+		appendFirstToLast(a);
 
-    expect(a).toStrictEqual(['Yes', 'it', 'is', 'Yes']);
-  });
+		expect(a).toStrictEqual(['Yes', 'it', 'is', 'Yes']);
+	});
 });
 
 describe('Testing challenge 4', () => {
-  test('It should add a property to an object', () => {
-    const a = { fullName: 'Octavia Butler' };
-    addBirthYearProperty(a, 1947);
+	test('It should add a property to an object', () => {
+		const a = { fullName: 'Octavia Butler' };
+		addBirthYearProperty(a, 1947);
 
-    expect(a.yearBorn).toStrictEqual(1947);
-  });
+		expect(a.yearBorn).toStrictEqual(1947);
+	});
 });
 
 xdescribe('Testing challenge 5', () => {
-  test('It should add a property to every object in an array', () => {
-    const a = [{ fullName: 'Octavia Butler' }, { fullName: 'Ray Bradbury' }, { fullName: 'Kurt Vonnegut' }];
-    setStatusAsAuthor(a);
+	test('It should add a property to every object in an array', () => {
+		const a = [
+			{ fullName: 'Octavia Butler' },
+			{ fullName: 'Ray Bradbury' },
+			{ fullName: 'Kurt Vonnegut' },
+		];
+		setStatusAsAuthor(a);
 
-    expect(a[0].isAuthor).toStrictEqual(true);
-    expect(a[1].isAuthor).toStrictEqual(true);
-    expect(a[2].isAuthor).toStrictEqual(true);
-  });
+		expect(a[0].isAuthor).toStrictEqual(true);
+		expect(a[1].isAuthor).toStrictEqual(true);
+		expect(a[2].isAuthor).toStrictEqual(true);
+	});
 });
 
 xdescribe('Testing challenge 6', () => {
-  test('It should append the second array to the first', () => {
-    const a = [1, 2, 3, 4];
-    const b = [5, 6, 7, 8];
-    append(a, b);
+	test('It should append the second array to the first', () => {
+		const a = [1, 2, 3, 4];
+		const b = [5, 6, 7, 8];
+		append(a, b);
 
-    expect(a).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8]);
-  });
+		expect(a).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+	});
 });
